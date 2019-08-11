@@ -15,7 +15,17 @@
     <body>
         <header>
             <div class="text-box">
-                <h1>Keep a personal, private diary - online.</h1>
+                <h1>Keep a personal,<br>private diary - online.</h1>
+                <?php
+                    if(isset($_SESSION['user_name'])){
+
+                    }else {
+                        ?>
+                        <a class="cta-btn" href="me/create.php">CREATE A DIARY</a>
+                        <?php
+                    }
+
+                ?>
             </div>
         </header>
         <br><br>
