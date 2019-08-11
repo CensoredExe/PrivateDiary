@@ -14,6 +14,19 @@ header {
     background-image: linear-gradient(to bottom right,rgba(0, 0, 0, 0.239), rgba(0, 0, 0, 0.253)),url(../../img/head-back.jpeg);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.596);
     background-attachment: fixed;
+    overflow: auto;
+}
+.row {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.text-box {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    color: #fff;
+    
 }
 .signup-hold {
     padding: 20px 20px;
@@ -50,6 +63,7 @@ header {
     margin-top: 15px;
 }
 .form-input {
+    resize: none;
     width: 90%;
     font-size: 25px;
     border-radius: 4px;
@@ -69,4 +83,93 @@ header {
     color: #fff;
     border: 1px solid #000;
     font-size: 18px;
+}
+
+nav {
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+}
+.logo-hold {
+    display: inline;
+    float: left;
+}
+.logo {
+    display: inline;
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom:3px solid rgb(224, 102, 218); 
+}
+.items-hold {
+    float: right;
+    display: inline;
+}
+.nav-item {
+    display: inline-block;
+    margin-left: 30px;
+    font-size: 22px;
+    margin-top:15px;
+}
+.nav-a {
+    color: #fff;
+    text-decoration: none;
+}
+.nav-main {
+    border: 3px solid rgb(224, 102, 218);
+    padding: 5px 10px;
+    color: rgb(240, 140, 235);
+    background-color: rgba(31, 31, 31, 0.246);
+}
+.nav-item:first-of-type {
+    margin-left: 0;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+.cta-btn {
+    font-size: 22px;
+    text-decoration: none;
+    border: 3px solid rgb(255, 255, 255);
+    padding: 5px 10px;
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+}
+.cta-sub-btn {
+    font-size: 22px;
+    text-decoration: none;
+    border: 3px solid rgb(88, 26, 85);
+    padding: 5px 10px;
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+}
+.write-hold {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    padding: 20px;
+    border-radius: 4px;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.87);
+    box-shadow: 2px 2px 5px rgba(46, 46, 46, 0.664);
+    width: 50%;
+}
+
+@media (max-width: 600px){
+    .signup-hold {
+        width: 100%;
+    }
+    .write-hold {
+        width: 80%;
+    }
+    .form-input {
+        font-size: 16px;
+    }
+    .signup-title {
+        font-size: 24px;
+    }
 }

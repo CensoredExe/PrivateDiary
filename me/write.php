@@ -17,6 +17,14 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+  <script>
+  tinymce.init({
+    selector: '#mytextarea'
+  });
+  </script>
+
 </head>
 
 <body>
@@ -28,19 +36,24 @@
                 </div>
                 <ul class="items-hold">
                 <li class="nav-item"><a class="nav-a nav-main" href="index.php">DASHBOARD</a></li>
-
                     <li class="nav-item"><a class="nav-a" href="help.php">Help</a></li>
                     <li class="nav-item"><a class="nav-a" href="logout.php">Log out</a></li>
                 </ul>
             </div>
         </nav>
         </div>
-        <div class="text-box">
-            <h1>What do you want to do today?</h1><br>
-            <a href="write.php" class="cta-btn">WRITE</a>
-            <a href="read.php" class="cta-sub-btn">READ</a>
-
+        <div class="write-hold">
+            <h2 class="signup-title">Make a new post</h2>
+            <br>
+            <form method="POST">
+            <label for="post-title" class="form-label">Post title</label><br>
+            <input class="form-input" id="post-title" name="post-title" required autofocus><br>
+            <label for="post-content" class="form-label">Post title</label><br>
+            <textarea id="mytextarea" required></textarea><br>
+            <button type="submit" class="submit-btn">Post privately</button>
+            </form>
         </div>
     </header>
+
 </body>
 </html>

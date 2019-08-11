@@ -19,6 +19,34 @@
     </head>
     <body>
         <header>
+        <nav>
+                <div class="row">
+                    <div class="logo-hold">
+                        <a class="logo" href="../index.php">PrivateDiary.me</a>
+                    </div>
+                    <ul class="items-hold">
+
+                    <?php
+                    if(isset($_SESSION['user_id'])){
+                        ?>
+                            <li class="nav-item"><a class="nav-a nav-main" href="index.php">START WRITING</a></li>
+                            <li class="nav-item"><a class="nav-a" href="help.php">Help</a></li>
+                            <li class="nav-item"><a class="nav-a" href="logout.php">Log out</a></li>
+
+                        <?php
+                    }else {
+                        ?>
+                        <li class="nav-item"><a class="nav-a nav-main" href="create.php">CREATE A DIARY</a></li>
+                        <li class="nav-item"><a class="nav-a" href="help.php">Help</a></li>
+                        <li class="nav-item"><a class="nav-a" href="login.php">Log in</a></li>
+
+                        <?php
+                    }
+                    ?>
+                       
+                    </ul>
+                </div>
+            </nav>
             <div class="signup-hold">
             <h2 class="signup-title">Login to your online diary</h2><br>
             <form method="POST">
