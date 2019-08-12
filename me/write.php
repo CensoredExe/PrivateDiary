@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include_once "../includes/include.php";
     if(!isset($_SESSION['user_id'])){
         header("Location: login.php");
     }
@@ -21,7 +22,7 @@
     <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
   <script>
   tinymce.init({
-    selector: '#mytextarea'
+    selector: '#post_content'
   });
   </script>
 
@@ -46,12 +47,37 @@
             <h2 class="signup-title">Make a new post</h2>
             <br>
             <form method="POST">
-            <label for="post-title" class="form-label">Post title</label><br>
-            <input class="form-input" id="post-title" name="post-title" required autofocus><br>
-            <label for="post-content" class="form-label">Post title</label><br>
-            <textarea id="mytextarea" required></textarea><br>
-            <button type="submit" class="submit-btn">Post privately</button>
+            <label for="post_title" class="form-label">Post title</label><br>
+            <input class="form-input" id="post_title" name="post_title" required autofocus><br>
+            <label for="post_content" class="form-label">Post content</label><br>
+            <textarea id="post_content" name="post_content" required>
+
+            </textarea><br>
+            <button type="submit" name="submit" class="submit-btn">Post privately</button>
             </form>
+            <?php 
+                if(isset($_POST['submit'])){
+                    $post_title = strip_tags(mysqli_real_escape_string($conn, $_POST['post_title']));
+                    $post_content = mysqli_real_escape_string($conn, $_POST['post_content']);
+
+                    
+                    $post_author = $_SESSION['user_id'];
+                    date_default_timezone_set('Europe/London');
+                    $post_date = date("d-m-Y H:i:s");  
+
+                    if(empty($post_title) || empty($post_content)){
+                        echo "Empty fields.";
+                        exit();
+                    }
+
+                    $sql = "INSERT INTO posts (`post_title`, `post_content`, `post_author`, `post_date`) VALUES ('$post_title', '$post_content', '$post_author', '$post_date');";
+                    if(mysqli_query($conn,$sql)){
+                        header("Location: read.php?Post added");
+                        exit();
+                    }
+                }
+
+            ?>
         </div>
     </header>
 

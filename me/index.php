@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include_once "../includes/include.php";
     if(!isset($_SESSION['user_id'])){
         header("Location: login.php");
     }
@@ -36,11 +37,39 @@
         </nav>
         </div>
         <div class="text-box">
+            <p>Welcome back, <?php echo $_SESSION['user_name']; ?></p>
             <h1>What do you want to do today?</h1><br>
             <a href="write.php" class="cta-btn">WRITE</a>
             <a href="read.php" class="cta-sub-btn">READ</a>
 
         </div>
+
+        <?php
+        $id = $_SESSION['user_id'];
+        $sql = "SELECT * FROM posts WHERE post_author='$id'";
+        $result = mysqli_query($conn, $sql);
+        if(mysqli_num_rows($result)>0){
+            $sql = "SELECT * FROM posts WHERE post_author='$id' ORDER BY post_id DESC LIMIT 1";
+            $result = mysqli_query($conn, $sql);
+            while($row = mysqli_fetch_assoc($result)){
+                $post_title = $row['post_title'];
+                $post_author = $row['post_author'];
+                $post_content = $row['post_content'];
+            
+            ?>
+            <div class="row">
+            <div class="posts-hold">
+                <h3>Your most recent post</h3>
+                <div class="post-hold">
+                    <h3><?php echo $post_title; ?></h3>
+                </div>
+            </div>
+        </div>
+            <?php
+            }
+        }
+        ?>
+        
     </header>
 </body>
 </html>

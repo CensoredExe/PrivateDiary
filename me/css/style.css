@@ -22,9 +22,8 @@ header {
 }
 
 .text-box {
-    position: absolute;
-    top: 20%;
-    left: 10%;
+    margin-top: 10%;
+    margin-left: 10%;
     color: #fff;
     
 }
@@ -158,9 +157,31 @@ h1 {
     box-shadow: 2px 2px 5px rgba(46, 46, 46, 0.664);
     width: 50%;
 }
-
+.posts-hold {
+    width: 100%;
+    display: block;
+    margin-top: 8%;
+}
+h3 {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 300;
+}
+.post-hold {
+    width: 40%;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.87);
+    box-shadow: 2px 2px 5px rgba(59, 59, 59, 0.712);
+}
+.post-hold h3 {
+    color: #000;
+}
 @media (max-width: 600px){
     .signup-hold {
+        width: 100%;
+    }
+    .post-hold {
         width: 100%;
     }
     .write-hold {
