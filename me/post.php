@@ -4,6 +4,11 @@
     if(!isset($_SESSION['user_id'])){
         header("Location: login.php");
     }
+    if(!isset($_GET['id'])){
+        echo "<script>window.location = 'index.php'</script>";
+        exit();
+    }
+    $id = mysqli_real_escape_string($conn, $_GET['id']);
 ?>
 
 <!DOCTYPE html>
@@ -36,44 +41,38 @@
             </div>
         </nav>
         </div>
-        <div class="text-box">
-            <p>Welcome back, <?php echo $_SESSION['user_name']; ?></p>
-            <h1>What do you want to do today?</h1><br>
-            <a href="write.php" class="cta-btn">WRITE</a>
-            <a href="read.php" class="cta-sub-btn">READ</a>
-
-        </div>
-
+       
         <?php
-        $id = $_SESSION['user_id'];
-        $sql = "SELECT * FROM posts WHERE post_author='$id'";
+        $user_id = $_SESSION['user_id'];
+        $sql = "SELECT * FROM posts WHERE post_id = '$id' AND post_author = '$user_id'";
         $result = mysqli_query($conn, $sql);
-        if(mysqli_num_rows($result)>0){
-            $sql = "SELECT * FROM posts WHERE post_author='$id' ORDER BY post_id DESC LIMIT 1";
-            $result = mysqli_query($conn, $sql);
+        if(mysqli_num_rows($result) == 1){
             while($row = mysqli_fetch_assoc($result)){
                 $post_id = $row['post_id'];
                 $post_date = $row['post_date'];
                 $post_title = $row['post_title'];
                 $post_author = $row['post_author'];
                 $post_content = $row['post_content'];
-            
-            ?>
-            <div class="row">
-            <div class="posts-hold">
-                <h3>Your most recent post</h3>
-                <div class="post-hold">
-                    <h3><?php echo $post_title; ?></h3>
+                ?>
+                <div style="margin-top: 10%;" class="row">
+                    <div class="full-post-hold">
+                        <a href="delete.php?id=<?php echo $post_id; ?>" style="position:absolute;top:10px;right:15px;" class="btn">DELETE</a>
+                    <h1><?php echo $post_title; ?></h1>
                     <p><?php echo $post_date; ?></p>
                     <hr><br>
-                    <p><?php echo substr($post_content, 0, 300);echo "..."; ?></p>
-                    <br><a href="post.php?id=<?php echo $post_id; ?>" class="btn">Read more.</a>
+                    <p style="line-height:1.2;"><?php echo $post_content; ?></p>
+                    </div>
                 </div>
-            </div>
-        </div>
-            <?php
+                <?php
             }
+        }else {
+            ?>
+            <h1 style="margin-top: 10%;
+            color: #fff;margin-left: 10%;">Error: Post doesnt exist</h1><br>
+            <a style="margin-left:10%;font-size:30px;" href="read.php" class="btn">Go back</a>
+            <?php
         }
+
         ?>
         
     </header>

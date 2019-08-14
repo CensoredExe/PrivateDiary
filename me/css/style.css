@@ -6,6 +6,7 @@
 body {
     background-color: rgb(238, 238, 238);
     font-family: 'Roboto', sans-serif;
+    overflow: hidden;
 }
 header {
     height: 100vh;
@@ -168,7 +169,8 @@ h3 {
     font-weight: 300;
 }
 .post-hold {
-    width: 40%;
+    width: 50%;
+    margin-top: 20px;
     padding: 20px;
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 0.87);
@@ -176,6 +178,25 @@ h3 {
 }
 .post-hold h3 {
     color: #000;
+}
+.btns-hold {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    
+}
+.btn-page {
+    background-color: #fff;
+    padding: 5px 8px;
+}
+.full-post-hold {
+    width: 100%;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.835);
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: relative;
 }
 @media (max-width: 600px){
     .signup-hold {
