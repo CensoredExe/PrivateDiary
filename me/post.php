@@ -44,8 +44,11 @@
        
         <?php
         $user_id = $_SESSION['user_id'];
+        
         $sql = "SELECT * FROM posts WHERE post_id = '$id' AND post_author = '$user_id'";
+
         $result = mysqli_query($conn, $sql);
+
         if(mysqli_num_rows($result) == 1){
             while($row = mysqli_fetch_assoc($result)){
                 $post_id = $row['post_id'];
@@ -57,12 +60,15 @@
                 <div style="margin-top: 10%;" class="row">
                     <div class="full-post-hold">
                         <a href="delete.php?id=<?php echo $post_id; ?>" style="position:absolute;top:10px;right:15px;" class="btn">DELETE</a>
-                    <h1><?php echo $post_title; ?></h1>
+                    <h3 style="color:#000;"><?php echo $post_title; ?></h3>
                     <p><?php echo $post_date; ?></p>
                     <hr><br>
                     <p style="line-height:1.2;"><?php echo $post_content; ?></p>
+                    <a style="position:absolute;bottom:10px;left:15px;" href="read.php" class="btn">Back</a>
                     </div>
+                    
                 </div>
+                
                 <?php
             }
         }else {

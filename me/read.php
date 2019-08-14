@@ -89,6 +89,8 @@
 
         <!-- BUTTONS PAGINATION -->
 
+        
+        </div>
         <div class="btns-hold">
         <?php 
 				echo "<center>";
@@ -100,8 +102,6 @@
 				echo "</center>";
 			?>
         </div>
-        </div>
-       
         
     </header>
 </body>

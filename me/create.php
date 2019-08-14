@@ -49,6 +49,8 @@
             </nav>
             <div class="signup-hold">
             <h2 class="signup-title">Create your online diary</h2><br>
+
+
             <form method="POST">
                 <label class="form-label" for="user_name">Your full name</label><br>
                 <input type="text" id="user_name" name="user_name" class="form-input" placeholder="Full name" required autofocus>
@@ -79,6 +81,7 @@
                         echo "<br>Error, enter a real email.";
                         exit();
                     }
+
                     $sql = "SELECT * FROM users WHERE user_email = '$user_email'";
                     $result = mysqli_query($conn, $sql);
                     if(mysqli_num_rows($result) > 0){
